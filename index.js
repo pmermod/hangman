@@ -10,8 +10,28 @@ console.log(
 );
 
 let randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
-let wordSplit = randomWord.split("");
-let blanksLength = wordSplit.length;
-blanksLength;
+let wordArray = randomWord.split("");
+let blanksLength = wordArray.length;
+wordArray;
+let blankString = "_"; // ^remove line above, just a test
 
-// ******** Figure out how to create an array of blanks whose length equals length of wordSplit
+// this below doesn't work, only prints one "_" in Quokka
+/*
+const printBlanks = (blanksLength) => {
+  console.log(blankString + " ".repeat(blanksLength));
+};
+
+printBlanks(blanksLength)
+*/
+
+let blanksArray = blankString.repeat(blanksLength).split("");
+console.log(blanksArray);
+
+// test
+console.log(blanksArray.length);
+
+// ******** Figure out how to create an array of blanks whose length equals length of wordArray
+
+//
+
+// WAIT NO! I CAN .SPLIT THE STRINGS(the underscores) INTO AN ARRAY!

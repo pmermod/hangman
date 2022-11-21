@@ -1,6 +1,6 @@
 import prompt from "readline-sync";
 //import wordBank from "./word-bank.js";
-const wordBank = ["win"];
+const wordBank = ["win"]; // REMOVE BEFORE SUBMITTING AND UNCOMMENT LINE ABOVE
 
 console.log(
   "\nLookout! \n .... It's HaNGMaN!\n\nPress ctrl + c to exit.\n\n\n"
@@ -18,42 +18,40 @@ let blanksLength = wordArray.length;
 // test
 wordArray;
 
-let blankString = "_"; // ^remove line above, just a test
+// To print number of blanks equal to number of letters in word (before first guess).
+// First, the "blanks" (underscore character) are put into an array so that they can later be replaced by any correcty guessed letters.
 
+let blankString = "_";
 let blanksArray = blankString.repeat(blanksLength).split("");
 
 // test
 blanksArray;
 
-// test
-//console.log(blanksArray.length);
+// Then the array of blanks is printed to console as a string.
 
 let allBlanksString = blanksArray.join(" ");
 //console.log(allBlanksString);
 console.log(allBlanksString);
-console.log("^");
 
-let letter = prompt.question("Enter a letter: ");
-console.log(letter);
+//UNCOMMENT LINE BELOW!! *********************************************
+//let input = prompt.question("Please guess a letter: ");
 
-//let letter = "e"; //only to test --  remove!
+let input = "n";
 
-let letterLower = letter.toLowerCase();
-let containsLetter = wordArray.includes(letterLower);
+//console.log(input);
 
-/*
+// Make letter lowercase
+let letter = input.toLowerCase();
+let containsLetter = wordArray.includes(letter);
+
+// If letter is included in word, fill in corresp. blanks with letters
 if (containsLetter) {
-  let letterIndex = wordArray.indexOf(letterLower);
-  blanksArray[letterIndex] = letterLower;
-  console.log(blanksArray);
-
+  let letterIndex = wordArray.indexOf(letter);
+  blanksArray[letterIndex] = letter;
+  console.log(blanksArray.join(" "));
+} // WILL THIS WORK ON REPEATED ROUNDS. WILL IT PRINT THE BLANKS ARRAY WITH ONLY THE CURRENTLY GUESSED LETTER FILLED IN. WAIT MAYBE NOT. HOW CAN I TEST THIS?
+else {
 }
-*/
-
-let letterIndex = wordArray.indexOf(letterLower);
-blanksArray[letterIndex] = letterLower;
-//newBlanks = blanksArray.join
-console.log(blanksArray.join(" "));
 
 // Sample code from class
 /*
@@ -65,4 +63,20 @@ if (feedback === "Good") {
 } else {
   console.log("I'm so sorry to hear that.");
 }
+*/
+
+/*
+const stickFig0 = " O\n |";
+const stickFig1 = " O\n\\|";
+const stickFig2 = " O\n\\|/";
+const stickFig3 = " O\n\\|/\n |";
+const stickFig4 = " O\n\\|/\n |\n/";
+const stickFig5 = " O\n\\|/\n |\n/ \\";
+
+console.log(stickFig0);
+console.log(stickFig1);
+console.log(stickFig2);
+console.log(stickFig3);
+console.log(stickFig4);
+console.log(stickFig5);
 */

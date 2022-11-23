@@ -30,7 +30,6 @@ blanksArray;
 // Then the array of blanks is printed to console as a string.
 
 let allBlanksString = blanksArray.join(" ");
-//console.log(allBlanksString);
 console.log(allBlanksString);
 
 //UNCOMMENT LINE BELOW!! *********************************************
@@ -49,8 +48,14 @@ if (containsLetter) {
   let letterIndex = wordArray.indexOf(letter);
   blanksArray[letterIndex] = letter;
   console.log(blanksArray.join(" "));
-} // WILL THIS WORK ON REPEATED ROUNDS. WILL IT PRINT THE BLANKS ARRAY WITH ONLY THE CURRENTLY GUESSED LETTER FILLED IN. WAIT MAYBE NOT. HOW CAN I TEST THIS?
+} // WILL THIS WORK ON REPEATED ROUNDS. WILL IT PRINT THE BLANKS ARRAY WITH ONLY THE CURRENTLY GUESSED LETTER FILLED IN. WAIT MAYBE NOT. HOW CAN I TEST THIS? RUN NODE .
 else {
+  let badGuessNum = 1;
+  console.log(
+    `\n ${letter} is not in the word.\nYou have ${
+      6 - badGuessNum
+    } incorrect guesses left.`
+  );
 }
 
 // Sample code from class

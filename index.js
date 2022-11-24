@@ -2,9 +2,7 @@ import prompt from "readline-sync";
 //import wordBank from "./word-bank.js";
 const wordBank = ["fossil"]; // REMOVE BEFORE SUBMITTING AND UNCOMMENT LINE ABOVE
 
-console.log(
-  "\nLookout! \n .... It's HaNGMaN!\n\nPress ctrl + c to exit.\n\n\n"
-);
+console.log("\nLookout! \n .... It's HaNGMaN!\n\nPress ctrl + c to exit.\n\n");
 
 console.log(
   "Guess the letters that make up the secret word, one letter at a time. \nYou are allowed six wrong guesses before you are hung.\n"
@@ -32,9 +30,9 @@ blanksArray;
 console.log(blanksArray.join(" "));
 
 //UNCOMMENT LINE BELOW!! *********************************************
-//let input = prompt.question("Please guess a letter: ");
+//let input = prompt.question("Please guess one letter: ");
 
-let input = "s";
+let input = "s"; // DELETE THIS LINE ***************************
 
 //console.log(input);
 
@@ -42,8 +40,7 @@ let input = "s";
 let letter = input.toLowerCase();
 //let containsLetter = wordArray.includes(letter);
 
-/* 
-If letter is included in word, fill in corresp. blanks with letters
+/* If letter is included in word, fill in corresp. blanks with letters
 
 if (containsLetter) {
   let letterIndex = wordArray.indexOf(letter);
@@ -64,7 +61,7 @@ else {
 }
 */
 
-//If letter is included in word, fill in corresp. blanks with letters. Works with multiple same letters in word.
+//If letter is included in word, fill in corresp. blanks in blanksArr with letter(s). Also works with same letter appearing multiple times in word.
 
 wordArray.forEach((currentItem, index) => {
   currentItem === letter ? (blanksArray[index] = letter) : null;

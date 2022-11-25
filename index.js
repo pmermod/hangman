@@ -32,12 +32,26 @@ console.log(blanksArray.join(" "));
 //UNCOMMENT LINE BELOW!! *********************************************
 //let input = prompt.question("Please guess one letter: ");
 
-let input = "s"; // DELETE THIS LINE ***************************
+let input = "S"; // DELETE THIS LINE ***************************
+
+// Tests if input is not a letter and prints error mssg and re-prompts
+if (/[^a-zA-Z]/.test(input)) {
+  console.log("Please try again, English letters only.");
+  //let input = prompt.question("Please guess one letter: ");
+} else {
+  let letter = input.toLowerCase();
+
+  //If letter is included in word, fill in corresp. blanks in blanksArr with letter(s). Also works with letter appearing multiple times in word.
+  wordArray.forEach((currentItem, index) => {
+    currentItem === letter ? (blanksArray[index] = letter) : null;
+  });
+  // ^I need function here
+
+  console.log(blanksArray.join(" "));
+}
 
 //console.log(input);
 
-// Make letter lowercase
-let letter = input.toLowerCase();
 //let containsLetter = wordArray.includes(letter);
 
 /* If letter is included in word, fill in corresp. blanks with letters
@@ -47,27 +61,15 @@ if (containsLetter) {
   blanksArray[letterIndex] = letter;
   console.log(blanksArray.join(" "));
 } 
+*/
 
-
-///*********************************** USE THIS FOR ELSE CODE BELOW 
-
-else {
-  let badGuessNum = 1;
+if (badGuessNum <= 6) {
   console.log(
-    `\n ${letter} is not in the word.\nYou have ${
+    `\nThe letter ${letter} is not in the word.\nYou have ${
       6 - badGuessNum
     } incorrect guesses left.`
   );
 }
-*/
-
-//If letter is included in word, fill in corresp. blanks in blanksArr with letter(s). Also works with same letter appearing multiple times in word.
-
-wordArray.forEach((currentItem, index) => {
-  currentItem === letter ? (blanksArray[index] = letter) : null;
-});
-
-console.log(blanksArray.join(" "));
 
 // Sample code from class
 /*
@@ -82,17 +84,17 @@ if (feedback === "Good") {
 */
 
 /*
-const stickFig0 = " O\n |";
-const stickFig1 = " O\n\\|";
-const stickFig2 = " O\n\\|/";
-const stickFig3 = " O\n\\|/\n |";
-const stickFig4 = " O\n\\|/\n |\n/";
-const stickFig5 = " O\n\\|/\n |\n/ \\";
+const Fig0 = " O\n |";
+const Fig1 = " O\n\\|";
+const Fig2 = " O\n\\|/";
+const Fig3 = " O\n\\|/\n |";
+const Fig4 = " O\n\\|/\n |\n/";
+const Fig5 = " O\n\\|/\n |\n/ \\";
 
-console.log(stickFig0);
-console.log(stickFig1);
-console.log(stickFig2);
-console.log(stickFig3);
-console.log(stickFig4);
-console.log(stickFig5);
+console.log(Fig0);
+console.log(Fig1);
+console.log(Fig2);
+console.log(Fig3);
+console.log(Fig4);
+console.log(Fig5);
 */

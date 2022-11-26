@@ -5,8 +5,13 @@ const wordBank = ["fosSil"]; // REMOVE BEFORE SUBMITTING AND UNCOMMENT LINE ABOV
 console.log("\nLookout! \n .... It's HaNGMaN!\n\nPress ctrl + c to exit.\n\n");
 
 console.log(
-  "Guess the letters that make up the secret word, one letter at a time. \nYou are allowed six wrong guesses before you are hanged.\n"
+  "Guess the secret word, one letter at a time. \nYou are allowed five incorrect guesses before you are hanged.\n"
 );
+
+const randomWord = wordBank[Math.floor(Math.random() * wordBank.length)]; //gets random word
+
+const wordArray = randomWord.toLowerCase().split("");
+let blanksLength = wordArray.length;
 
 // Variables containing the stick figures to be printed based on number of incorrect guesses (badGuessNum)
 const fig1 = " O\n |";
@@ -14,20 +19,13 @@ const fig2 = " O\n\\|";
 const fig3 = " O\n\\|/";
 const fig4 = " O\n\\|/\n |";
 const fig5 = " O\n\\|/\n |\n/";
-const fig6 = " O\n\\|/\n |\n/ \\";
-
-const randomWord = wordBank[Math.floor(Math.random() * wordBank.length)]; //gets random word
-
-const wordArray = randomWord.toLowerCase().split("");
-let blanksLength = wordArray.length;
-
-
+const fig6 = " O\n\\|/\n |\n/ \\ \n\nSorry, Game Over";
 
 // test
 wordArray;
 
-// To print number of blanks equal to number of letters in word (before first guess).
-// First, the "blanks" (underscore character) are put into an array so that they can later be replaced by any correctly guessed letters.
+// To print number of blanks equal to number of letters in word (below first prompt).
+// First, the "blanks" (underscore character) are put into an array so that they can later be replaced by correctly guessed letters.
 
 let blankString = "_";
 let blanksArray = blankString.repeat(blanksLength).split("");
@@ -39,7 +37,7 @@ blanksArray;
 
 console.log(blanksArray.join(" "));
 
-//********************************************* UNCOMMENT LINE BELOW!! 
+//********************************************* UNCOMMENT LINE BELOW!!
 //let input = prompt.question("Please guess one letter: ");
 
 let input = "S"; // DELETE THIS LINE ***************************
@@ -57,23 +55,21 @@ if (/[^a-zA-Z]/.test(input)) {
   });
   // ^I need function here for the Else
 
-  console.log(blanksArray.join(" "));
+  console.log("\n\n" + blanksArray.join(" "));
 }
 
-
 // TRYING TO DEVELOP A FUNCTION FOR THE ELSE CONDITION ABOVE
-
+/*
 if (badGuessNum <= 6) {
   console.log(
     `\nThe letter ${letter} is not in the word.\nYou have ${
       6 - badGuessNum
     } incorrect guesses left.`
   );
-  console.log("\n"fig1)
 }
-
+*/
 // Print figure function. JOIN ABOVE AND BELOW SOMEHOW
-
+/*
 const printFigure = (badGuessNum) => {
   if (badGuessNum === 1) {
     console.log("\n", fig1);
@@ -87,9 +83,8 @@ const printFigure = (badGuessNum) => {
     console.log("\n", fig5);
   } else {
     console.log("\n", fig6);
-  };
-}
-
+  }
+};
 
 // Sample code from class
 /*
@@ -102,8 +97,6 @@ if (feedback === "Good") {
   console.log("I'm so sorry to hear that.");
 }
 */
-
-
 
 /* If letter is included in word, fill in corresp. blanks with letters
 

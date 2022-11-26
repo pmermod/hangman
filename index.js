@@ -1,17 +1,27 @@
 import prompt from "readline-sync";
 //import wordBank from "./word-bank.js";
-const wordBank = ["fossil"]; // REMOVE BEFORE SUBMITTING AND UNCOMMENT LINE ABOVE
+const wordBank = ["fosSil"]; // REMOVE BEFORE SUBMITTING AND UNCOMMENT LINE ABOVE
 
 console.log("\nLookout! \n .... It's HaNGMaN!\n\nPress ctrl + c to exit.\n\n");
 
 console.log(
-  "Guess the letters that make up the secret word, one letter at a time. \nYou are allowed six wrong guesses before you are hung.\n"
+  "Guess the letters that make up the secret word, one letter at a time. \nYou are allowed six wrong guesses before you are hanged.\n"
 );
 
-let randomWord = wordBank[Math.floor(Math.random() * wordBank.length)]; //gets random word
-let wordLower = randomWord.toLowerCase();
-let wordArray = wordLower.split("");
+// Variables containing the stick figures to be printed based on number of incorrect guesses (badGuessNum)
+const fig1 = " O\n |";
+const fig2 = " O\n\\|";
+const fig3 = " O\n\\|/";
+const fig4 = " O\n\\|/\n |";
+const fig5 = " O\n\\|/\n |\n/";
+const fig6 = " O\n\\|/\n |\n/ \\";
+
+const randomWord = wordBank[Math.floor(Math.random() * wordBank.length)]; //gets random word
+
+const wordArray = randomWord.toLowerCase().split("");
 let blanksLength = wordArray.length;
+
+
 
 // test
 wordArray;
@@ -29,7 +39,7 @@ blanksArray;
 
 console.log(blanksArray.join(" "));
 
-//UNCOMMENT LINE BELOW!! *********************************************
+//********************************************* UNCOMMENT LINE BELOW!! 
 //let input = prompt.question("Please guess one letter: ");
 
 let input = "S"; // DELETE THIS LINE ***************************
@@ -41,27 +51,17 @@ if (/[^a-zA-Z]/.test(input)) {
 } else {
   let letter = input.toLowerCase();
 
-  //If letter is included in word, fill in corresp. blanks in blanksArr with letter(s). Also works with letter appearing multiple times in word.
+  //If letter is included in word, fill in corresp. blanks in blanksArr with letter(s). Works with letter appearing multiple times in word.
   wordArray.forEach((currentItem, index) => {
     currentItem === letter ? (blanksArray[index] = letter) : null;
   });
-  // ^I need function here
+  // ^I need function here for the Else
 
   console.log(blanksArray.join(" "));
 }
 
-//console.log(input);
 
-//let containsLetter = wordArray.includes(letter);
-
-/* If letter is included in word, fill in corresp. blanks with letters
-
-if (containsLetter) {
-  let letterIndex = wordArray.indexOf(letter);
-  blanksArray[letterIndex] = letter;
-  console.log(blanksArray.join(" "));
-} 
-*/
+// TRYING TO DEVELOP A FUNCTION FOR THE ELSE CONDITION ABOVE
 
 if (badGuessNum <= 6) {
   console.log(
@@ -69,7 +69,27 @@ if (badGuessNum <= 6) {
       6 - badGuessNum
     } incorrect guesses left.`
   );
+  console.log("\n"fig1)
 }
+
+// Print figure function. JOIN ABOVE AND BELOW SOMEHOW
+
+const printFigure = (badGuessNum) => {
+  if (badGuessNum === 1) {
+    console.log("\n", fig1);
+  } else if (badGuessNum === 2) {
+    console.log("\n", fig2);
+  } else if (badGuessNum === 3) {
+    console.log("\n", fig3);
+  } else if (badGuessNum === 4) {
+    console.log("\n", fig4);
+  } else if (badGuessNum === 5) {
+    console.log("\n", fig5);
+  } else {
+    console.log("\n", fig6);
+  };
+}
+
 
 // Sample code from class
 /*
@@ -83,18 +103,13 @@ if (feedback === "Good") {
 }
 */
 
-/*
-const Fig0 = " O\n |";
-const Fig1 = " O\n\\|";
-const Fig2 = " O\n\\|/";
-const Fig3 = " O\n\\|/\n |";
-const Fig4 = " O\n\\|/\n |\n/";
-const Fig5 = " O\n\\|/\n |\n/ \\";
 
-console.log(Fig0);
-console.log(Fig1);
-console.log(Fig2);
-console.log(Fig3);
-console.log(Fig4);
-console.log(Fig5);
+
+/* If letter is included in word, fill in corresp. blanks with letters
+
+if (containsLetter) {
+  let letterIndex = wordArray.indexOf(letter);
+  blanksArray[letterIndex] = letter;
+  console.log(blanksArray.join(" "));
+} 
 */

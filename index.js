@@ -51,21 +51,24 @@ let letter = input.toLowerCase();
 
 //If letter is included in word, fill in corresp. blanks in blanksArr with letter(s). Works with letter appearing multiple times in word.
 /*
+
 wordArray.forEach((currentItem, index) => {
   currentItem === letter ? (blanksArray[index] = letter) : null;
 });
+
 */
 // ^I need function here for the Else
 
 for (let i = 0; 0 < wordArray.length; i++) {
   if (wordArray[i] === letter) {
     blanksArray[i] = letter;
+    console.log("\n\n" + blanksArray.join(" "));
   } else {
-    // ************************************CONTINUE HERE!!!!!!!!!!!!
-  }
+    let badGuessNum = 1;
+  } // ************************************CONTINUE HERE
 }
 
-console.log("\n\n" + blanksArray.join(" "));
+// console.log("\n\n" + blanksArray.join(" "));
 
 // TRYING TO DEVELOP A FUNCTION FOR THE ELSE CONDITION ABOVE
 /*

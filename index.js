@@ -44,19 +44,28 @@ let input = "S"; // DELETE THIS LINE ***************************
 
 // Tests if input is not a letter and prints error mssg and re-prompts
 if (/[^a-zA-Z]/.test(input)) {
-  console.log("Please try again, English letters only.");
+  console.log("\n\nPlease try again, English letters only.");
   //let input = prompt.question("Please guess one letter: ");
-} else {
-  let letter = input.toLowerCase();
-
-  //If letter is included in word, fill in corresp. blanks in blanksArr with letter(s). Works with letter appearing multiple times in word.
-  wordArray.forEach((currentItem, index) => {
-    currentItem === letter ? (blanksArray[index] = letter) : null;
-  });
-  // ^I need function here for the Else
-
-  console.log("\n\n" + blanksArray.join(" "));
 }
+let letter = input.toLowerCase();
+
+//If letter is included in word, fill in corresp. blanks in blanksArr with letter(s). Works with letter appearing multiple times in word.
+/*
+wordArray.forEach((currentItem, index) => {
+  currentItem === letter ? (blanksArray[index] = letter) : null;
+});
+*/
+// ^I need function here for the Else
+
+for (let i = 0; 0 < wordArray.length; i++) {
+  if (wordArray[i] === letter) {
+    blanksArray[i] = letter;
+  } else {
+    // ************************************CONTINUE HERE!!!!!!!!!!!!
+  }
+}
+
+console.log("\n\n" + blanksArray.join(" "));
 
 // TRYING TO DEVELOP A FUNCTION FOR THE ELSE CONDITION ABOVE
 /*
@@ -69,20 +78,20 @@ if (badGuessNum <= 6) {
 }
 */
 // Print figure function. JOIN ABOVE AND BELOW SOMEHOW
-/*
+
 const printFigure = (badGuessNum) => {
   if (badGuessNum === 1) {
-    console.log("\n", fig1);
+    console.log("\n", fig1, "\n", blanksArray);
   } else if (badGuessNum === 2) {
-    console.log("\n", fig2);
+    console.log("\n", fig2, "\n", blanksArray);
   } else if (badGuessNum === 3) {
-    console.log("\n", fig3);
+    console.log("\n", fig3, "\n", blanksArray);
   } else if (badGuessNum === 4) {
-    console.log("\n", fig4);
+    console.log("\n", fig4, "\n", blanksArray);
   } else if (badGuessNum === 5) {
-    console.log("\n", fig5);
+    console.log("\n", fig5, "\n", blanksArray);
   } else {
-    console.log("\n", fig6);
+    console.log("\n", fig6, "\n", blanksArray);
   }
 };
 

@@ -14,12 +14,28 @@ const wordArray = randomWord.toLowerCase().split("");
 let blanksLength = wordArray.length;
 
 // Variables containing the stick figures to be printed based on number of incorrect guesses (badGuessNum)
-const fig1 = " O\n |";
-const fig2 = " O\n\\|";
-const fig3 = " O\n\\|/";
-const fig4 = " O\n\\|/\n |";
-const fig5 = " O\n\\|/\n |\n/";
-const fig6 = " O\n\\|/\n |\n/ \\ \n\nSorry, You Lose";
+const fig1 = "O\n |";
+const fig2 = "O\n\\|";
+const fig3 = "O\n\\|/";
+const fig4 = "O\n\\|/\n |";
+const fig5 = "O\n\\|/\n |\n/";
+const fig6 = "O\n\\|/\n |\n/ \\ \n\nSorry, You Lose";
+
+const printFigure = (badGuessNum) => {
+  if (badGuessNum === 1) {
+    console.log("\n", fig1, "\n", blanksArray);
+  } else if (badGuessNum === 2) {
+    console.log("\n", fig2, "\n", blanksArray);
+  } else if (badGuessNum === 3) {
+    console.log("\n", fig3, "\n", blanksArray);
+  } else if (badGuessNum === 4) {
+    console.log("\n", fig4, "\n", blanksArray);
+  } else if (badGuessNum === 5) {
+    console.log("\n", fig5, "\n", blanksArray);
+  } else {
+    console.log("\n", fig6, "\n", blanksArray);
+  }
+};
 
 // test
 wordArray;
@@ -52,7 +68,7 @@ let letter = input.toLowerCase();
 //If letter is included in word, fill in corresp. blanks in blanksArr with letter(s). Works with letter appearing multiple times in word.
 
 wordArray.forEach((currentItem, index) => {
-  currentItem === letter ? (blanksArray[index] = letter) : null;
+  currentItem === letter ? (blanksArray[index] = letter) : printFigure(); //NEED badGuessNum COUNTER
 });
 
 // ^I need function here for the Else
@@ -78,23 +94,6 @@ if (badGuessNum <= 6) {
   );
 }
 */
-// Print figure function. JOIN ABOVE AND BELOW SOMEHOW
-
-const printFigure = (badGuessNum) => {
-  if (badGuessNum === 1) {
-    console.log("\n", fig1, "\n", blanksArray);
-  } else if (badGuessNum === 2) {
-    console.log("\n", fig2, "\n", blanksArray);
-  } else if (badGuessNum === 3) {
-    console.log("\n", fig3, "\n", blanksArray);
-  } else if (badGuessNum === 4) {
-    console.log("\n", fig4, "\n", blanksArray);
-  } else if (badGuessNum === 5) {
-    console.log("\n", fig5, "\n", blanksArray);
-  } else {
-    console.log("\n", fig6, "\n", blanksArray);
-  }
-};
 
 // Sample code from class
 /*

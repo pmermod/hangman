@@ -43,7 +43,7 @@ let blanksArr = blankString.repeat(wordArr.length).split("");
 
 console.log("\nLookout! \n .... It's HaNGMaN!\n\nPress ctrl + c to exit.\n");
 console.log(
-  "Guess the secret word, one letter at a time. \nYou are allowed five incorrect guesses before you lose the game.\n"
+  "Guess the secret word, one letter at a time. \nYou are allowed six incorrect guesses before you lose the game.\n"
 );
 
 let badGuessNum = 0;
@@ -52,6 +52,7 @@ let badGuessNum = 0;
 
 while (badGuessNum < 6 && blanksArr.indexOf("_") !== -1) {
   console.log("\n" + blanksArr.join(" "));
+
   let input = prompt.question("\n\nPlease guess a letter: ");
   let letter = input.toLowerCase();
 
@@ -60,9 +61,9 @@ while (badGuessNum < 6 && blanksArr.indexOf("_") !== -1) {
     currentItem === letter ? (blanksArr[index] = letter) : null;
   });
 
-  // If blanksArr has no more blanks (because they are replaced by the letters of the word), declare Winner.
+  // If blanksArr has no more blanks (because they are replaced by the correctly guessed letters of the word), declare Winner.
   if (blanksArr.indexOf("_") === -1) {
-    console.log(blanksArr.join(" "));
+    console.log("\n" + blanksArr.join(" "));
     console.log("\nW I N N E R !!!\n\n");
   }
 

@@ -36,8 +36,12 @@ const printFigure = (badGuessNum) => {
 
 // Set up array of blanks with length equal to word length.
 
+let blanksArr;
 const blankString = "_";
-let blanksArr = blankString.repeat(wordArr.length).split("");
+const declareBlanksArr = (blankString) => {
+  blanksArr = blankString.repeat(wordArr.length).split("");
+};
+declareBlanksArr(blankString);
 
 // Log game's opening messages.
 
@@ -56,18 +60,20 @@ while (badGuessNum < 6 && blanksArr.indexOf("_") !== -1) {
   let input = prompt.question("\n\nPlease guess a letter: ");
   let letter = input.toLowerCase();
 
-  // If letter is included in word, fill in corresp. blanks in blanksArr with letter(s). Works with letter appearing multiple times in word:
+  // If letter is included in word, fill in corresponding blanks in blanksArr with letter(s). Works with letter appearing multiple times in word:
   wordArr.forEach((currentItem, index) => {
     currentItem === letter ? (blanksArr[index] = letter) : null;
   });
 
   // If blanksArr has no more blanks (because they are replaced by the correctly guessed letters of the word), declare Winner.
+
   if (blanksArr.indexOf("_") === -1) {
     console.log("\n" + blanksArr.join(" "));
     console.log("\nW I N N E R !!!\n\n");
   }
 
-  // If letter not in word increment bad guess number, print incorrect guess number and run function to draw stick figures.
+  // If letter not in word, increment incorrect guess number, print incorrect guess number and run function to draw stick figures.
+
   if (wordArr.indexOf(letter) === -1) {
     badGuessNum++;
     console.log(`\nIncorrect Guess Number: ${badGuessNum}`);

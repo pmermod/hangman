@@ -67,7 +67,7 @@ while (badGuessNum < 6 && blanksArr.indexOf("_") !== -1) {
     console.log("\nW I N N E R !!!\n\n");
   }
 
-  // If letter not in word ...
+  // If letter not in word increment bad guess number, print incorrect guess number and run function to draw stick figures.
   if (wordArr.indexOf(letter) === -1) {
     badGuessNum++;
     console.log(`\nIncorrect Guess Number: ${badGuessNum}`);

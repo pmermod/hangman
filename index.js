@@ -1,5 +1,6 @@
 import prompt from "readline-sync";
-import wordBank from "./word-bank.js";
+//import wordBank from "./word-bank.js";
+const wordBank = ["fosSil"]; // REMOVE BEFORE SUBMITTING AND UNCOMMENT LINE ABOVE
 
 // Variables containing the stick figures to be printed based on number of incorrect guesses (badGuessNum)
 const fig1 = "O\n |";
@@ -56,23 +57,22 @@ while (badGuessNum < 6 && blanksArr !== wordArr) {
   }
   */
 
-  /*OKAY THIS DOESN'T WORK!!
-
   wordArr.forEach((currentItem, index) => {
-    currentItem === letter ? (blanksArr[index] = letter) : badGuessNum++;
+    currentItem === letter ? (blanksArr[index] = letter) : null;
     //printFigure();
   });
-  console.log("Incorrect Guess Number: " + badGuessNum);
-  */
+  //console.log("Incorrect Guess Number: " + badGuessNum);
 
+  /*
   let containsLetter = wordArr.includes(letter);
 
   if (containsLetter) {
-    let letterIndex = wordArr.indexOf(letter); //NEED A Check for multiple same letters
+    let letterIndex = wordArr.indexOf(letter); //NEED A Check for multiple same letters ****** !!!!
     blanksArr[letterIndex] = letter;
     console.log(blanksArr.join(" "));
   } else {
     badGuessNum++;
   }
-  console.log("Incorrect Guess Number: " + badGuessNum);
+  */
+  //console.log("Incorrect Guess Number: " + badGuessNum);
 }

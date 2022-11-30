@@ -1,14 +1,22 @@
 import prompt from "readline-sync";
-//import wordBank from "./word-bank.js";
-const wordBank = ["fosSil"]; // REMOVE BEFORE SUBMITTING AND UNCOMMENT LINE ABOVE
+import wordBank from "./word-bank.js";
 
-// Variables containing the stick figures to be printed based on number of incorrect guesses (badGuessNum)
+// Choose random word and make lower case.
+
+const randomWord = wordBank[Math.floor(Math.random() * wordBank.length)]; //gets random word
+const wordArr = randomWord.toLowerCase().split("");
+
+// The stick figures to be printed based on number of incorrect guesses (badGuessNum) when the printFigure function is called.
+
 const fig1 = "O\n |";
 const fig2 = "O\n\\|";
 const fig3 = "O\n\\|/";
 const fig4 = "O\n\\|/\n |";
 const fig5 = "O\n\\|/\n |\n/";
-const fig6 = "O\n\\|/\n |\n/ \\ \n\nSorry, You Lose";
+const fig6 =
+  'O\n\\|/\n |\n/ \\ \n\nSorry, You Lose.\nThe correct word was "' +
+  randomWord +
+  '"';
 
 const printFigure = (badGuessNum) => {
   if (badGuessNum === 1) {
@@ -26,15 +34,12 @@ const printFigure = (badGuessNum) => {
   }
 };
 
-const randomWord = wordBank[Math.floor(Math.random() * wordBank.length)]; //gets random word
-const wordArr = randomWord.toLowerCase().split("");
-
-wordArr;
+// Set up array of blanks with length equal to word length.
 
 const blankString = "_";
 let blanksArr = blankString.repeat(wordArr.length).split("");
 
-//blanksArr;
+// Log game's opening messages.
 
 console.log("\nLookout! \n .... It's HaNGMaN!\n\nPress ctrl + c to exit.\n");
 console.log(
@@ -43,29 +48,25 @@ console.log(
 
 let badGuessNum = 0;
 
+// Run loop while less than 6 incorrect guesses and the array of blanks still contains blanks.
+
 while (badGuessNum < 6 && blanksArr.indexOf("_") !== -1) {
   console.log("\n" + blanksArr.join(" "));
-  let input = prompt.question("\nPlease guess a letter: ");
+  let input = prompt.question("\n\nPlease guess a letter: ");
   let letter = input.toLowerCase();
-  /*
-  if (/[^a-zA-Z]/.test(input)) {
-    //if NOT an alpha character
-    console.log("\n\nPlease try again, letters only.");
-    let input = prompt.question("Please guess a letter: "); //WHAT IF NON-ALPHA ENTERED AGAIN?
-  } else {
-    let letter = input.toLowerCase();
-  }
-  */
 
+  // If letter is included in word, fill in corresp. blanks in blanksArr with letter(s). Works with letter appearing multiple times in word:
   wordArr.forEach((currentItem, index) => {
     currentItem === letter ? (blanksArr[index] = letter) : null;
   });
 
+  // If blanksArr has no more blanks (because they are replaced by the letters of the word), declare Winner.
   if (blanksArr.indexOf("_") === -1) {
     console.log(blanksArr.join(" "));
-    console.log("\nW I N N E R !!!");
+    console.log("\nW I N N E R !!!\n\n");
   }
 
+  // If letter not in word ...
   if (wordArr.indexOf(letter) === -1) {
     badGuessNum++;
     console.log(`\nIncorrect Guess Number: ${badGuessNum}`);

@@ -16,5 +16,4 @@ If you guess a letter that is in the word, it will replace the blank(s) for that
 To win the game guess all the letters in the word before making six wrong guesses.
 
 If you guess a letter that is not in the word you will begin to hang.
-You can make six wrong guesses before you are hanged.
 For each wrong guess another line in the hangman figure will be drawn until the full hangman figure is drawn by the sixth wrong guess, which ends the game and you lose.

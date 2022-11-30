@@ -33,7 +33,7 @@ wordArr;
 const blankString = "_";
 let blanksArr = blankString.repeat(wordArr.length).split("");
 
-//blanksArr
+//blanksArr;
 
 console.log("\nLookout! \n .... It's HaNGMaN!\n\nPress ctrl + c to exit.\n\n");
 console.log(
@@ -43,8 +43,10 @@ console.log(
 let badGuessNum = 0;
 
 while (badGuessNum < 6 && blanksArr !== wordArr) {
-  let input = prompt.question("Please guess a letter: ");
-
+  console.log(blanksArr.join(" "));
+  let input = prompt.question("\nPlease guess a letter: ");
+  let letter = input.toLowerCase();
+  /*
   if (/[^a-zA-Z]/.test(input)) {
     //if NOT an alpha character
     console.log("\n\nPlease try again, letters only.");
@@ -52,9 +54,25 @@ while (badGuessNum < 6 && blanksArr !== wordArr) {
   } else {
     let letter = input.toLowerCase();
   }
+  */
+
+  /*OKAY THIS DOESN'T WORK!!
 
   wordArr.forEach((currentItem, index) => {
     currentItem === letter ? (blanksArr[index] = letter) : badGuessNum++;
-    printFigure();
+    //printFigure();
   });
+  console.log("Incorrect Guess Number: " + badGuessNum);
+  */
+
+  let containsLetter = wordArr.includes(letter);
+
+  if (containsLetter) {
+    let letterIndex = wordArr.indexOf(letter); //NEED A Check for multiple same letters
+    blanksArr[letterIndex] = letter;
+    console.log(blanksArr.join(" "));
+  } else {
+    badGuessNum++;
+  }
+  console.log("Incorrect Guess Number: " + badGuessNum);
 }
